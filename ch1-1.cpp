@@ -6,6 +6,9 @@ using namespace std;
 #include "qpp.h"
 using namespace qpp;
 
+// abbreviate some syntax
+#define cd complex<double>
+
 // http://www-keeler.ch.cam.ac.uk/lectures/quant_a4.pdf
 
 int main(void)
@@ -18,20 +21,20 @@ int main(void)
 	bra b(d);
 
 	// Set bra values
-	b << complex<double>(1.0, 0.0), // there is only 1 way to roll a total of two
-		complex<double>(2.0, 0.0), // three
-		complex<double>(3.0, 0.0), // four
-		complex<double>(4.0, 0.0), // five
-		complex<double>(5.0, 0.0), // six
-		complex<double>(6.0, 0.0), // seven
-		complex<double>(5.0, 0.0), // eight
-		complex<double>(4.0, 0.0), // nine
-		complex<double>(3.0, 0.0), // ten
-		complex<double>(2.0, 0.0), // eleven
-		complex<double>(1.0, 0.0); // twelve
+	b << cd(1.0, 0.0), // there is only 1 way to roll a total of two
+		cd(2.0, 0.0), // three
+		cd(3.0, 0.0), // four
+		cd(4.0, 0.0), // five
+		cd(5.0, 0.0), // six
+		cd(6.0, 0.0), // seven
+		cd(5.0, 0.0), // eight
+		cd(4.0, 0.0), // nine
+		cd(3.0, 0.0), // ten
+		cd(2.0, 0.0), // eleven
+		cd(1.0, 0.0); // twelve
 
 	// Get sum
-	complex<double> s;
+	cd s;
 
 	for (size_t i = 0; i < d; i++)
 		s += b[i];
@@ -40,7 +43,7 @@ int main(void)
 
 	// Convert probabilities to probability amplitudes, normalize
 	for (size_t i = 0; i < d; i++)
-		b[i] = sqrt(b[i]/sum);
+		b[i] = sqrt(b[i] / sum);
 
 	// Create ket
 	ket k(d);
