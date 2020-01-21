@@ -14,6 +14,7 @@ int main(void)
 {
 	// allocate enough space to hold the count of the number of ways of rolling
 	// a two through twelve inclusive, on a pair of six-sided dice
+	// d stands for dimension
 	size_t d = 11;
 
 	// Create bra
