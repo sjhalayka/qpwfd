@@ -31,8 +31,12 @@ int main(void)
 
 	pair<dyn_col_vect<cd>, cmat> p = eig(A);
 
-	// Print eigenvalues and eigenvectors
-	cout << disp(p.first) << endl << endl << disp(p.second) << endl;
+	// Manually print eigenvalues and eigenvectors
+	for (size_t i = 0; i < d; i++)
+		cout << disp(p.first(i)) << endl;
+
+	for (size_t i = 0; i < d; i++)
+		cout << disp(p.second.col(i)) << endl << endl;
 
 	return 0;
 }
