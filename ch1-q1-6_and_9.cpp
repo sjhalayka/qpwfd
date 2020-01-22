@@ -9,7 +9,6 @@ using namespace qpp;
 // abbreviate some syntax
 #define cd complex<double>
 
-// http://www-keeler.ch.cam.ac.uk/lectures/quant_a4.pdf
 
 void conv_bra_to_ket(const size_t d, const bra& b, ket& k)
 {
@@ -25,10 +24,7 @@ void conv_ket_to_bra(const size_t d, const ket& k, bra& b)
 
 int main(void)
 {
-	// allocate enough space to hold the count of the number of ways of rolling
-	// a two through twelve inclusive, on a pair of six-sided dice
-	// d stands for dimension
-	size_t d = 11;
+	size_t d = 7;
 
 	// Create bra
 	bra b(d);
@@ -38,13 +34,9 @@ int main(void)
 		cd(2.0, 0.0), // three
 		cd(3.0, 0.0), // four
 		cd(4.0, 0.0), // five
-		cd(5.0, 0.0), // six
-		cd(6.0, 0.0), // seven
-		cd(5.0, 0.0), // eight
-		cd(4.0, 0.0), // nine
-		cd(3.0, 0.0), // ten
-		cd(2.0, 0.0), // eleven
-		cd(1.0, 0.0); // twelve
+		cd(3.0, 0.0), // six
+		cd(2.0, 0.0), // seven
+		cd(1.0, 0.0); // eight
 
 	// Get sum
 	cd s;
@@ -64,10 +56,24 @@ int main(void)
 	// Automatically assign values
 	conv_bra_to_ket(d, b, k);
 
-	// Print stuff
-	cout << disp(b) << endl << endl;
-	cout << disp(k) << endl << endl;
+	// Create operator matrix
+	cmat A(d, d);
+
+	A << cd(2.0, 0.0), cd(0.0, 0.0), cd(0.0, 0.0), cd(0.0, 0.0), cd(0.0, 0.0), cd(0.0, 0.0), cd(0.0, 0.0),
+		cd(0.0, 0.0), cd(3.0, 0.0), cd(0.0, 0.0), cd(0.0, 0.0), cd(0.0, 0.0), cd(0.0, 0.0), cd(0.0, 0.0),
+		cd(0.0, 0.0), cd(0.0, 0.0), cd(4.0, 0.0), cd(0.0, 0.0), cd(0.0, 0.0), cd(0.0, 0.0), cd(0.0, 0.0),
+		cd(0.0, 0.0), cd(0.0, 0.0), cd(0.0, 0.0), cd(5.0, 0.0), cd(0.0, 0.0), cd(0.0, 0.0), cd(0.0, 0.0),
+		cd(0.0, 0.0), cd(0.0, 0.0), cd(0.0, 0.0), cd(0.0, 0.0), cd(6.0, 0.0), cd(0.0, 0.0), cd(0.0, 0.0),
+		cd(0.0, 0.0), cd(0.0, 0.0), cd(0.0, 0.0), cd(0.0, 0.0), cd(0.0, 0.0), cd(7.0, 0.0), cd(0.0, 0.0),
+		cd(0.0, 0.0), cd(0.0, 0.0), cd(0.0, 0.0), cd(0.0, 0.0), cd(0.0, 0.0), cd(0.0, 0.0), cd(8.0, 0.0);
+
 	cout << disp(b * k) << endl << endl;
+
+	cout << disp(b) << endl << endl;
+	cout << disp(A) << endl << endl;
+	cout << disp(k) << endl << endl;
+
+	cout << disp(b * A * k) << endl << endl;
 
 	return 0;
 }

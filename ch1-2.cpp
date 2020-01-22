@@ -10,6 +10,18 @@ using namespace qpp;
 #define cd complex<double>
 
 
+void conv_bra_to_ket(const size_t d, const bra& b, ket& k)
+{
+	for (size_t i = 0; i < d; i++)
+		k[i] = conj(b[i]);
+}
+
+void conv_ket_to_bra(const size_t d, const ket& k, bra& b)
+{
+	for (size_t i = 0; i < d; i++)
+		b[i] = conj(k[i]);
+}
+
 int main(void)
 {
 	// allocate enough space to hold the count of the number of ways of rolling
@@ -43,13 +55,13 @@ int main(void)
 
 	// Convert probabilities to probability amplitudes, normalize
 	for (size_t i = 0; i < d; i++)
-		b[i] = sqrt(b[i]/sum);
+		b[i] = sqrt(b[i] / sum);
 
 	// Create ket
 	ket k(d);
 
 	// Automatically assign values
-	k = b;
+	conv_bra_to_ket(d, b, k);
 
 	// Create operator matrix
 	cmat A(d, d);
