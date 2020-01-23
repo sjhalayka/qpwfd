@@ -17,16 +17,21 @@ using namespace qpp;
 
 int main(void)
 {
-	cd x(1.0, 0.0);
-	cd e(ee, 0.0);
-	cd p(pi, 0.0);
-	cd i(0.0, 1.0);
+	cd ecd(ee, 0.0);
+	cd pcd(pi, 0.0);
+	cd icd(0.0, 1.0);
 
-	cd a = cos(x) + i*sin(x);
-	cd b = pow(e, i*x);
+	for (double x = 0.0; x < 2 * pi; x += pi / 2.0)
+	{
+		cd xcd(x, 0.0);
 
-	cout << a << endl;
-	cout << b << endl;
+		cd a = cos(xcd) + icd * sin(xcd);
+		cd b = pow(ecd, icd * xcd);
+
+		cout << a << endl;
+		cout << b << endl;
+		cout << endl;
+	}
 
 	return 0;
 }
