@@ -25,6 +25,7 @@ int main(void)
 	{
 		cd xcd(x, 0.0);
 
+		// They are one and the same
 		cd a = cos(xcd) + icd * sin(xcd);
 		cd b = pow(ecd, icd * xcd);
 
