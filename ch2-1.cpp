@@ -17,13 +17,13 @@ using namespace qpp;
 
 int main(void)
 {
-	cd ecd(ee, 0.0);
-	cd pcd(pi, 0.0);
-	cd icd(0.0, 1.0);
+	const cd ecd(ee, 0.0);
+	const cd pcd(pi, 0.0);
+	const cd icd(0.0, 1.0);
 
 	for (double x = 0.0; x < 2 * pi; x += pi / 2.0)
 	{
-		cd xcd(x, 0.0);
+		const cd xcd(x, 0.0);
 
 		// They are one and the same
 		cd a = cos(xcd) + icd * sin(xcd);
