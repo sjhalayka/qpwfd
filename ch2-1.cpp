@@ -12,6 +12,7 @@ using namespace qpp;
 // https://homepage.univie.ac.at/reinhold.bertlmann/pdfs/T2_Skript_Ch_4.pdf
 // http://www.mathcentre.ac.uk/resources/Engineering%20maths%20first%20aid%20kit/latexsource%20and%20diagrams/7_7.pdf
 // http://www.astro.uvic.ca/~jwillis/teaching/phys215/phys215_lecture4.pdf
+// http://physics.mq.edu.au/~jcresser/Phys201/LectureNotes/SchrodingerEqn.pdf
 
 
 int main(void)
