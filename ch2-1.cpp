@@ -18,10 +18,10 @@ using namespace qpp;
 int main(void)
 {
 	const cd ecd(ee, 0.0);
-	const cd pcd(pi, 0.0);
 	const cd icd(0.0, 1.0);
 
-	for (double x = 0.0; x < 2 * pi; x += pi / 2.0)
+	// Plot forms a loop
+	for (double x = 0.0; x <= 2 * pi; x += pi / 2.0)
 	{
 		const cd xcd(x, 0.0);
 
