@@ -10,24 +10,28 @@ using namespace qpp;
 #define cd complex<double>
 
 
-cd psi_cos_sin(cd x, cd n)
+cd psi_cos_sin(cd x, size_t n)
 {
 	const cd pcd(pi, 0.0);
 	const cd mcd(1.0, 0.0);
 	const cd acd(1.0, 0.0);
+	const cd ncd(n, 0.0);
 
-	return	sqrt(2.0 / acd) * cos(n * pcd * x / acd) +
-			sqrt(2.0 / acd) * sin((n + cd(1.0, 0.0)) * pcd * x / acd);
+	cd ret;
+
+	// If even, else odd
+	if (n % 2 == 0)
+		ret = sqrt(2.0 / acd) * sin(ncd * pcd * x / acd);
+	else
+		ret = sqrt(2.0 / acd) * cos(ncd * pcd * x / acd);
+
+	return ret;
 }
 
 int main(void)
 {
-	for (double n = 1.0; n <= 10.0; n += 1.0)
-	{
-		const cd ncd(n, 0.0);
-
-		cout << psi_cos_sin(1.0, ncd) << endl;
-	}
+	for (size_t n = 1; n <= 10; n++)
+		cout << psi_cos_sin(1.0, n) << endl;
 
 	return 0;
 }
