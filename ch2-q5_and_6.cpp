@@ -10,20 +10,21 @@ using namespace qpp;
 #define cd complex<double>
 
 
-cd psi_cos_sin(cd x, size_t n)
+cd psi_cos_sin(const cd x, size_t n)
 {
 	const cd pcd(pi, 0.0);
-	const cd mcd(1.0, 0.0);
 	const cd acd(1.0, 0.0);
 	const cd ncd(n, 0.0);
+	const cd icd(0.0, 1.0);
+	const cd twocd(2.0, 0.0);
 
 	cd ret;
 
 	// If even, else odd
 	if (n % 2 == 0)
-		ret = sqrt(2.0 / acd) * sin(ncd * pcd * x / acd);
+		ret = sqrt(twocd / acd) * sin(ncd * pcd * x / acd);
 	else
-		ret = sqrt(2.0 / acd) * cos(ncd * pcd * x / acd);
+		ret = sqrt(twocd / acd) * cos(ncd * pcd * x / acd);
 
 	return ret;
 }
